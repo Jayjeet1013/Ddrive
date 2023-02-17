@@ -2,7 +2,7 @@
 import  "./App.css"
 
 function  App(){
-  return <div className='App'>kya bolti ha
+  return <div className='App'>kya bolti hai sabh thik hai na
   </div>
 }
 
