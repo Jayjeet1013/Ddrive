@@ -48,6 +48,7 @@ function  App(){
     <div className='bg bg3'></div>
 
    <p>Account: {account ? account : "Not connected "}</p>
+   <FileUpload provider={provider} contract={contract} account={account}></FileUpload>
     </div>
 }
 
