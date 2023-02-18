@@ -15,6 +15,14 @@ function  App(){
     const provider= new ethers.providers.Web3Provider(window.ethereum);
     const loadProvider=async()=>{
       if(provider){
+
+        window.ethereum.on("chainChanged",() =>{
+           window.location.reload();
+        });
+
+        window.ethereum.on("accountsChanged",()=>{
+             window.location.reload();
+        });
         await provider.send("eth_requestAccounts",[]);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
@@ -24,6 +32,7 @@ function  App(){
         const contract = new ethers.Contract(
           contractAddress,Upload.abi,signer
         )
+          console.log(contract);
           setContract(contract)
           setProvider(provider)
       }else{
@@ -32,7 +41,14 @@ function  App(){
     };
     provider && loadProvider();
   },[]);
-    return <div className='App'> </div>
+    return <div className='App'> 
+    <h1 style={{color:'yellow'}}>Ddrive</h1>
+    <div className='bg'></div>
+    <div className='bg bg2'></div>
+    <div className='bg bg3'></div>
+
+   <p>Account: {account ? account : "Not connected "}</p>
+    </div>
 }
 
 export default App;
