@@ -15,7 +15,7 @@ const FileUpload=({contract, account, provider})=> {
       </label>
       <input disabled={!account} type="file" id="file-upload" name="data" onChange={retrieveFile}/>
     <span className="textArea">Image:#temporary.png</span>
-    <button type="submit" className="upload"></button>
+    <button type="submit" className="upload">upload File</button>
     </form>
   </div>
 }
