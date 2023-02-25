@@ -8,8 +8,21 @@ const FileUpload=({contract, account, provider})=> {
   e.preventDefault();
   if(file){
     try{
-      const formData = new Data();
+      const formData = new FormData();
       formData("file",file)
+
+      const resFile = await axios({
+        method: "post",
+        url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        data: formData,
+        headers: {
+          pinata_api_key: ` 3923de318903e7335703          `,
+          pinata_secret_api_key: `  32663863987b234a404b413757c3583c777866003b678eb84f65c18ea7dd47ea`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
+      contract.add(account,ImgHash);
     }catch(e){
       alert("Unable to upload image to pinata");
     }
