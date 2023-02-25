@@ -7,9 +7,14 @@ const FileUpload=({contract, account, provider})=> {
   const handleSubmit=async(e)=>{
   e.preventDefault();
   if(file){
-    try
+    try{
+      const formData = new Data();
+      formData("file",file)
+    }catch(e){
+      alert("Unable to upload image to pinata");
+    }
   }
-  }
+  };
   const retrieveFile=()=>{
 
   }
