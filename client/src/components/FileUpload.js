@@ -22,7 +22,7 @@ const FileUpload=({contract, account, provider})=> {
         },
       });
       const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
-      contract.add(account,ImgHash);
+      await contract.add(account,ImgHash);
     }catch(e){
       alert("Unable to upload image to pinata");
     }
