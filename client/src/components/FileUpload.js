@@ -23,14 +23,18 @@ const FileUpload=({contract, account, provider})=> {
       });
       const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
       await contract.add(account,ImgHash);
+      alert("Successfully Image Uploaded");
+      setFileName("No image selected");
+      setFile(null);
     }catch(e){
       alert("Unable to upload image to pinata");
     }
   }
   };
-  const retrieveFile=()=>{
-
-  }
+  const retrieveFile=(e)=>{
+   const data = e.target.files[0];
+   console.log(data)
+  };
   return <div className="top">
     <form className=" form" onSubmit={handleSubmit}>
       <label htmlFor="file-upload" className="choose">
